@@ -1,0 +1,6 @@
+# Ignore personal CV data
+src/data/cv.js
+
+.vercel
+
+assets/images/photo.jpg
