@@ -66,6 +66,7 @@ body {
   background: var(--bg);
   padding: 2.25rem 1.25rem 3.25rem;
   transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
 }
 
 .theme-toggle {
@@ -112,6 +113,7 @@ body[data-theme="dark"] .theme-toggle svg:last-child {
 
 #cv {
   max-width: var(--width);
+  width: 100%;
   margin: 0 auto;
   background: var(--panel);
   border: 1px solid var(--border);
@@ -188,6 +190,7 @@ a:hover {
 
 .cv-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.9rem;
 }
@@ -218,6 +221,7 @@ a:hover {
 
 .header-flags {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
   margin-top: 0.75rem;
@@ -463,7 +467,7 @@ body[data-theme="light"] .projects-grid .entry {
   border-color: #f3f4f6;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -502,15 +506,65 @@ body[data-theme="light"] .projects-grid .entry {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   body {
-    padding: 2rem 1rem 4rem;
+    padding: 1.75rem 1rem 2.5rem;
+  }
+
+  #cv {
+    padding: 2rem 1.5rem 2.25rem;
   }
 
   .cv-name {
-    font-size: 1.4rem;
+    font-size: 1.65rem;
   }
 
+  .cv-header {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .cv-header-left {
+    align-items: center;
+    width: 100%;
+  }
+
+  .cv-title {
+    max-width: none;
+  }
+
+  .cv-meta,
+  .cv-links,
+  .header-flags {
+    justify-content: center;
+  }
+
+  .cv-photo {
+    width: 104px;
+    height: 104px;
+  }
+
+  .theme-toggle {
+    height: 42px;
+    width: 42px;
+    top: 14px;
+    right: 14px;
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .entry-header {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
   .entry-header {
     flex-direction: column;
     gap: 0.15rem;
@@ -518,5 +572,42 @@ body[data-theme="light"] .projects-grid .entry {
 
   .entry-right {
     text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1.5rem 0.75rem 3rem;
+  }
+
+  #cv {
+    padding: 1.5rem 1.1rem 2rem;
+  }
+
+  .cv-name {
+    font-size: 1.35rem;
+  }
+
+  .cv-photo {
+    width: 84px;
+    height: 84px;
+  }
+
+  .cv-meta {
+    font-size: 0.78rem;
+  }
+
+  .section-label {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .cv-links {
+    gap: 0.4rem;
+  }
+
+  .cv-link-icon {
+    padding: 0.28rem 0.4rem;
   }
 }
