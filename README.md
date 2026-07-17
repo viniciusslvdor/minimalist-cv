@@ -18,7 +18,13 @@ If you want to keep your personal data private in your own repo, do not commit `
 
 ### 2. Preview locally
 
-Open `index.html` directly in the browser. No server required.
+The app uses native ES modules (`<script type="module">`), so opening `index.html` directly (`file://`) won't work - browsers block module imports over the `file://` protocol. Serve the folder over HTTP instead, e.g. with Node (no install needed):
+
+```bash
+npx serve .
+```
+
+Then open the printed URL (usually `http://localhost:3000`).
 
 ### 3. Deploy for free
 
@@ -26,7 +32,7 @@ Any static hosting service works, giving some personal options:
 
 | Service | How to deploy |
 |---|---|
-| **GitHub Pages** | Push the repo and enable Pages in *Settings → Pages → Deploy from branch* |
+| **GitHub Pages** | Push the repo and enable Pages in the repo settings |
 | **Vercel** | Run `npx vercel` in the project folder |
 
 ---
@@ -43,7 +49,9 @@ minimalist-cv/
 │   │   └── cv.example.js  # Template example for other users
 │   ├── styles/
 │   │   └── style.css      # Visual styles
-│   └── app.js             # Renderer (usually no changes needed)
+│   ├── components/        # One renderer per CV section (header, about, skills, ...)
+│   ├── utils/              # DOM and date helpers
+│   └── app.js              # Entry point: bootstraps theme + renders components
 ├── gitignore
 ├── LICENSE
 ├── README.md
